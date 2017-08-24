@@ -10,5 +10,12 @@ namespace Leopard.Models
         public Group Grupo { get; set; }
 
         public IEnumerable <Group> Grupos { get; set; }
+
+        public Result Result { get; set; }
+
+        public GroupViewModel()
+        {
+            Result = null;
+        }
     }
 }

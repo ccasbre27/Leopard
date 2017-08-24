@@ -9,7 +9,28 @@
 
 <h1>Bienvenido a Matuned</h1>
 
+<p>El objetivo del sitio web es facilitar la búsqueda de grupos de What's App de los cursos de la UNED, este sitio no tiene ninguna relación con la universidad es creado por y para estudiantes</p>
+
+<p><b>Para incorporarse a un grupo ingrese desde un navegador como Mozilla o Google Chrome desde un dispostivo donde tenga el WhatsApp abierto</b></p>
 <br />
+
+@{ 
+   
+
+    if (Model.Result != null)
+    {
+
+        var claseStatus = Model.Result.Status ? "alert-success" : "alert-danger";
+
+        <div class="alert @claseStatus alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            @Model.Result.Message
+        </div>
+   }
+}
+
+
+
 
 <div class="panel panel-default">
     <div class="panel-heading">Cursos disponibles</div>
@@ -17,8 +38,16 @@
 
         @Html.Grid(Model.Grupos).Columns(columns =>
         {
-            columns.Add(e => e.Name).Titled("Nombre").Filterable(true);
-            columns.Add(e => e.WhatsAppURL).Titled("URL");
+            columns.Add(e => e.Name)
+                .Titled("Nombre")
+                .Filterable(true);
+
+            columns.Add()
+                .Titled("URL")
+                .Sanitized(false)
+                .Encoded(false)
+                .RenderValueAs(e => @<a href="@e.WhatsAppURL">@e.WhatsAppURL</a>); 
+
         }).WithPaging(20)
     </div>
 </div>
@@ -39,7 +68,7 @@
                         @Html.LabelFor(x => x.Grupo.WhatsAppURL, new { @class = "col-md-4 control-label " })
                         <div class="col-md-8">
 
-                            @Html.TextBoxFor(x => x.Grupo.WhatsAppURL, new { @class = "form-control input-md", placeholder = "Nombre del curso" })
+                            @Html.TextBoxFor(x => x.Grupo.WhatsAppURL, new { @class = "form-control input-md", placeholder = "Url del curso" })
 
                             <span class="help-block">@Html.ValidationMessageFor(x => x.Grupo.WhatsAppURL, null, new { style = "color: red;" })</span>
                         </div>
@@ -51,7 +80,7 @@
                         <div class="col-md-8">
                             <input type="reset" class="btn btn-danger" value="Restablecer" />
 
-                            <input type="submit" class="btn btn-success" value="Agregar" />
+                            <input type="submit" class="btn btn-success" value="Verificar" />
                         </div>
                     </div>
 
@@ -68,7 +97,7 @@
     <div class="panel-heading">Agregar</div>
     <div class="panel-body">
 
-        @using (Html.BeginForm("AddGroup", "Home", FormMethod.Post, new { @class = "form-horizontal" }))
+        @using (Html.BeginForm("AddGroup", "Home", FormMethod.Post, new { @class = "form-horizontal", name = "AddGroupForm"}))
         {
             @Html.AntiForgeryToken()
 
@@ -92,7 +121,7 @@
                         @Html.LabelFor(x => x.Grupo.WhatsAppURL, new { @class = "col-md-4 control-label " })
                         <div class="col-md-8">
 
-                            @Html.TextBoxFor(x => x.Grupo.WhatsAppURL, new { @class = "form-control input-md", placeholder = "Nombre del curso" })
+                            @Html.TextBoxFor(x => x.Grupo.WhatsAppURL, new { @class = "form-control input-md", placeholder = "Url del curso" })
 
                             <span class="help-block">@Html.ValidationMessageFor(x => x.Grupo.WhatsAppURL, null, new { style = "color: red;" })</span>
                         </div>
@@ -114,3 +143,8 @@
 
     </div>
 </div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}   
+

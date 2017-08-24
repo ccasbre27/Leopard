@@ -12,9 +12,12 @@ namespace Leopard.Context
     {
         public DbSet<Group> Groups { get; set; }
 
-        public LeopardContext() : base()
-        {
+        public DbSet<Log> Logs { get; set; }
 
+        public LeopardContext() : base("LeopardConnectionString")
+        {
+            // se debe establecer el tipo de migración
+            //Database.SetInitializer<LeopardContext>(new DropCreateDatabaseIfModelChanges<LeopardContext>());
         }
 
      
