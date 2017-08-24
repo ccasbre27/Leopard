@@ -1,31 +1,116 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@using Leopard.Models;
+@using GridMvc.Html;
+
+@{
+    ViewBag.Title = "Inicio";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+@model GroupViewModel
+
+<h1>Bienvenido a Matuned</h1>
+
+<br />
+
+<div class="panel panel-default">
+    <div class="panel-heading">Cursos disponibles</div>
+    <div class="panel-body">
+
+        @Html.Grid(Model.Grupos).Columns(columns =>
+        {
+            columns.Add(e => e.Name).Titled("Nombre").Filterable(true);
+            columns.Add(e => e.WhatsAppURL).Titled("URL");
+        }).WithPaging(20)
+    </div>
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+<br />
+
+<div class="panel panel-default">
+    <div class="panel-heading">Verificar existencia de grupo</div>
+    <div class="panel-body">
+
+        @using (Html.BeginForm("CheckGroup", "Home", FormMethod.Post, new { @class = "form-horizontal" }))
+        {
+            @Html.AntiForgeryToken()
+
+                <div class="col-lg-8">
+                    <div class="form-group">
+
+                        @Html.LabelFor(x => x.Grupo.WhatsAppURL, new { @class = "col-md-4 control-label " })
+                        <div class="col-md-8">
+
+                            @Html.TextBoxFor(x => x.Grupo.WhatsAppURL, new { @class = "form-control input-md", placeholder = "Nombre del curso" })
+
+                            <span class="help-block">@Html.ValidationMessageFor(x => x.Grupo.WhatsAppURL, null, new { style = "color: red;" })</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for=""></label>
+                        <div class="col-md-8">
+                            <input type="reset" class="btn btn-danger" value="Restablecer" />
+
+                            <input type="submit" class="btn btn-success" value="Agregar" />
+                        </div>
+                    </div>
+
+                </div>
+         
+        }
+
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+</div>
+
+<br />
+
+<div class="panel panel-default">
+    <div class="panel-heading">Agregar</div>
+    <div class="panel-body">
+
+        @using (Html.BeginForm("AddGroup", "Home", FormMethod.Post, new { @class = "form-horizontal" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="form-group">
+
+                        @Html.LabelFor(x => x.Grupo.Name, new { @class = "col-md-4 control-label " })
+                        <div class="col-md-8">
+
+                            @Html.TextBoxFor(x => x.Grupo.Name, new { @class = "form-control input-md", placeholder = "Nombre del curso" })
+
+                            <span class="help-block">@Html.ValidationMessageFor(x => x.Grupo.Name, null, new { style = "color: red;" })</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="form-group">
+
+                        @Html.LabelFor(x => x.Grupo.WhatsAppURL, new { @class = "col-md-4 control-label " })
+                        <div class="col-md-8">
+
+                            @Html.TextBoxFor(x => x.Grupo.WhatsAppURL, new { @class = "form-control input-md", placeholder = "Nombre del curso" })
+
+                            <span class="help-block">@Html.ValidationMessageFor(x => x.Grupo.WhatsAppURL, null, new { style = "color: red;" })</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for=""></label>
+                        <div class="col-md-8">
+                            <input type="reset" class="btn btn-danger" value="Restablecer" />
+
+                            <input type="submit" class="btn btn-success" value="Agregar" />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        }
+
     </div>
 </div>
