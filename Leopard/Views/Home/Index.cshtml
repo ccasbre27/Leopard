@@ -12,6 +12,7 @@
 <p>El objetivo del sitio web es facilitar la búsqueda de grupos de What's App de los cursos de la UNED, este sitio no tiene ninguna relación con la universidad es creado por y para estudiantes</p>
 
 <p><b>Para incorporarse a un grupo ingrese desde un navegador como Mozilla o Google Chrome desde un dispostivo donde tenga el WhatsApp abierto</b></p>
+<p>Si necesita ayuda para utilizar el sitio puede ir @Html.ActionLink("acá", "Help", "Home")</p>
 <br />
 
 @{ 
@@ -36,19 +37,25 @@
     <div class="panel-heading">Cursos disponibles</div>
     <div class="panel-body">
 
-        @Html.Grid(Model.Grupos).Columns(columns =>
+        @Html.Grid(Model.Grupos).SetLanguage("es").Columns(columns =>
         {
-            columns.Add(e => e.Name)
-                .Titled("Nombre")
-                .Filterable(true);
 
-            columns.Add()
-                .Titled("URL")
-                .Sanitized(false)
-                .Encoded(false)
-                .RenderValueAs(e => @<a href="@e.WhatsAppURL">@e.WhatsAppURL</a>); 
+           columns.Add(e => e.Code)
+            .Titled("Código")
+            .Filterable(true);
 
-        }).WithPaging(20)
+           columns.Add(e => e.Name)
+               .Titled("Nombre")
+               .Filterable(true);
+
+           columns.Add()
+               .Titled("URL")
+               .Sanitized(false)
+               .Encoded(false)
+               .RenderValueAs(e => @<a href="@e.WhatsAppURL">@e.WhatsAppURL</a>);
+            
+
+            }).WithPaging(20)
     </div>
 </div>
 

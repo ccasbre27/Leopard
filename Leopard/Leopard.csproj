@@ -166,6 +166,11 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Gridmvc.css" />
+    <Content Include="Content\img\00.PNG" />
+    <Content Include="Content\img\01.PNG" />
+    <Content Include="Content\img\02.PNG" />
+    <Content Include="Content\img\03.PNG" />
+    <Content Include="Content\img\04.PNG" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -178,6 +183,7 @@
     <Content Include="Grid.mvc.readme" />
     <None Include="Properties\PublishProfiles\matuned - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\matuned - Web Deploy.pubxml" />
+    <Content Include="Scripts\gridmvc.lang.es.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\gridmvc.js" />
     <Content Include="Scripts\gridmvc.lang.ru.js" />
@@ -207,6 +213,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_GridPager.cshtml" />
     <Content Include="Views\Shared\_Grid.cshtml" />
+    <Content Include="Views\Home\Help.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

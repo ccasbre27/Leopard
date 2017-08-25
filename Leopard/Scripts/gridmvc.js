@@ -444,7 +444,7 @@ TextFilterWidget = (function ($) {
         this.cb = cb;
         this.container = container;
         this.lang = lang;
-        this.value = values.length > 0 ? values[0] : { filterType: 1, filterValue: "" };//support only one filter value
+        this.value = values.length > 0 ? values[0] : { filterType: 2, filterValue: "" };//support only one filter value
         this.renderWidget();
         this.registerEvents();
     };

@@ -142,6 +142,13 @@ namespace Leopard.Controllers
             return View("Index", viewModel);
         }
 
+        public ActionResult Help()
+        {
+
+            return View();
+        }
+
+
         public ActionResult About()
         {
 

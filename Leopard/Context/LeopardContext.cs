@@ -16,8 +16,7 @@ namespace Leopard.Context
 
         public LeopardContext() : base("LeopardConnectionString")
         {
-            // se debe establecer el tipo de migración
-            //Database.SetInitializer<LeopardContext>(new DropCreateDatabaseIfModelChanges<LeopardContext>());
+            
         }
 
      
