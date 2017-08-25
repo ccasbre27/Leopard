@@ -28,7 +28,7 @@ namespace Leopard.Models
        
         private string _whatsAppURL;
 
-        [DisplayName("URL")]
+        [DisplayName("WhatsApp")]
         [Required]
         [RegularExpression(@"^https://chat.whatsapp.com/.+", ErrorMessage = "Url no válida")]
         public string WhatsAppURL
@@ -37,6 +37,8 @@ namespace Leopard.Models
             set { _whatsAppURL = value.Trim(); }
         }
 
+        [DisplayName("Código")]
+        [Required]
         public int Code { get; set; }
 
         public DateTime CreatedDate { get; set; }
