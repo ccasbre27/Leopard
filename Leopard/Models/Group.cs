@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -36,6 +37,7 @@ namespace Leopard.Models
             set { _whatsAppURL = value.Trim(); }
         }
 
+        public int Code { get; set; }
 
         public DateTime CreatedDate { get; set; }
 
