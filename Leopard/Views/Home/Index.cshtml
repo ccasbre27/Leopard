@@ -7,7 +7,9 @@
 
 @model GroupViewModel
 
-<h1>Bienvenido a Matuned</h1>
+<h1>Bienvenido a WhatsAppUNED</h1>
+
+<h3>Ahora nos puede buscar como whatsappuned.com !</h3>
 
 <p>El objetivo del sitio web es facilitar la búsqueda de grupos de What's App de los cursos de la UNED, este sitio no tiene ninguna relación con la universidad es creado por y para estudiantes</p>
 
@@ -59,7 +61,7 @@
        .Titled("URL")
        .Sanitized(false)
        .Encoded(false)
-       .RenderValueAs(e => @<a href="@e.WhatsAppURL">@e.WhatsAppURL</a>);
+       .RenderValueAs(e => @<a href="@e.WhatsAppURL" target="_blank">@e.WhatsAppURL</a>);
 
 
         }).WithPaging(20)
@@ -154,7 +156,10 @@
                         </div>
                     </div>
                 </div>
-
+                <div class="col-lg-8">
+                    <p> <b>Nota: En caso de agregar un grupo de una carrera puede agregar en el código el de la carrera o un cero</b>   </p>
+                  
+                </div>
                 <div class="col-lg-4 pull-right">
                     <div class="form-group">
                         <label class="col-md-4 control-label" for=""></label>
