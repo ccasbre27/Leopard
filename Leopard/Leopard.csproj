@@ -180,7 +180,6 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Grid.mvc.readme" />
     <None Include="Properties\PublishProfiles\matuned - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\matuned - Web Deploy.pubxml" />
     <Content Include="Scripts\gridmvc.lang.es.js" />

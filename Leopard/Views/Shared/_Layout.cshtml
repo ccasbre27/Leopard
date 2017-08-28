@@ -12,9 +12,12 @@
 
     <script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
 
-
+    
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
+
+            <a href="https://github.com/ccasbre27/Leopard" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0; width: 149px; height: 149px;" src="http://aral.github.com/fork-me-on-github-retina-ribbons/right-cerulean@2x.png" alt="Fork me on GitHub"></a>
+
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
@@ -25,14 +28,14 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Guía", "Help", "Home")</li>
+                    <li>@Html.ActionLink("Guía de uso", "Help", "Home")</li>
                     <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
                 </ul>
             </div>
         </div>
     </div>
-    <div class="container body-content">
+
+     <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
