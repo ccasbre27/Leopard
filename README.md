@@ -34,11 +34,12 @@ If you want to contribute please follow the next steps:
 
 * **Carlos Castro Brenes** - *Initial work* - 
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See also the list of [contributors]() who participated in this project.
 
 ## License
 
 This project is licensed under the GPL License - see the [LICENSE.md](LICENSE.md) file for details
 
+[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 
