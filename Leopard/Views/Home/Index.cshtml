@@ -7,11 +7,11 @@
 
 @model GroupViewModel
 
-<h1>Bienvenido a WhatsAppUNED</h1>
+<h1>¡Bienvenido(a)!</h1>
 
-<h3>Ahora nos puede buscar como whatsappuned.com !</h3>
+<h3><b><u>En los próximos días la página será trasladada a grupos.estudiantesunedcr.net !</b></u></h3>
 
-<p>El objetivo del sitio web es facilitar la búsqueda de grupos de What's App de los cursos de la UNED (los grupos son creados y agregados por los estudiantes), este sitio no tiene ninguna relación con la universidad es creado por y para estudiantes</p>
+<p>El objetivo del sitio web es facilitar la búsqueda de grupos de los cursos de la UNED (los grupos son creados y agregados por los estudiantes), este sitio no tiene ninguna relación con la universidad es creado por y para estudiantes</p>
 
 <p><b><u>Para incorporarse a un grupo ingrese desde un navegador como Mozilla o Google Chrome desde un dispostivo donde tenga el WhatsApp abierto</u></b></p>
 
@@ -21,8 +21,6 @@
 
 
 <br />
-
-
 
 
 @{ 
@@ -47,25 +45,27 @@
     <div class="panel-heading">Cursos disponibles</div>
     <div class="panel-body">
 
-        @Html.Grid(Model.Grupos).SetLanguage("es").Columns(columns =>
-   {
+       
 
-   columns.Add(e => e.Code)
-    .Titled("Código")
-    .Filterable(true);
+       @Html.Grid(Model.Grupos).SetLanguage("es").Columns(columns =>
+       {
 
-   columns.Add(e => e.Name)
-       .Titled("Nombre")
-       .Filterable(true);
+       columns.Add(e => e.Code)
+        .Titled("Código")
+        .Filterable(true);
 
-   columns.Add()
-       .Titled("URL")
-       .Sanitized(false)
-       .Encoded(false)
-       .RenderValueAs(e => @<a href="@e.WhatsAppURL" target="_blank">@e.WhatsAppURL</a>);
+       columns.Add(e => e.Name)
+           .Titled("Nombre")
+           .Filterable(true);
+
+       columns.Add()
+           .Titled("URL")
+           .Sanitized(false)
+           .Encoded(false)
+           .RenderValueAs(e => @<a href="@e.WhatsAppURL">@e.WhatsAppURL</a>);
 
 
-        }).WithPaging(20)
+            }).WithPaging(20)
     </div>
 </div>
 
@@ -77,8 +77,8 @@
 
         @using (Html.BeginForm("CheckGroup", "Home", FormMethod.Post, new { @class = "form-horizontal" }))
         {
-            @Html.AntiForgeryToken()
 
+            @Html.AntiForgeryToken()
                 <div class="col-lg-8">
                     <div class="form-group">
 
@@ -114,10 +114,10 @@
     <div class="panel-heading">Agregar</div>
     <div class="panel-body">
 
-        @using (Html.BeginForm("AddGroup", "Home", FormMethod.Post, new { @class = "form-horizontal", name = "AddGroupForm"}))
+        @using (Html.BeginForm("AddGroup", "Home", FormMethod.Post, new { @class = "form-horizontal", name = "AddGroupForm" }))
         {
-            @Html.AntiForgeryToken()
 
+            @Html.AntiForgeryToken()
             <div class="row">
                 <div class="col-lg-4">
                     <div class="form-group">

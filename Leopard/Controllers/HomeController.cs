@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 
 namespace Leopard.Controllers
 {
@@ -13,25 +14,31 @@ namespace Leopard.Controllers
     {
 
         LeopardContext db = new LeopardContext();
+        static GroupViewModel viewModel = null;
 
         public ActionResult Index()
-        {   
-            GroupViewModel viewModel = new GroupViewModel()
+        {
+
+            GroupViewModel auxViewModel = new GroupViewModel();
+
+            if (viewModel != null)
             {
-                Grupo = new Group(),
-                Grupos = GetGroups()
+                auxViewModel.Grupo = viewModel.Grupo;
+                auxViewModel.Result = viewModel.Result;
+            }
 
-            };
+            auxViewModel.Grupos = GetGroups();
 
-            return View(viewModel);
+            viewModel = new GroupViewModel();
+
+
+            return View(auxViewModel);
         }
 
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> AddGroup(GroupViewModel groupViewModel)
         {
-            GroupViewModel viewModel = new GroupViewModel();
-
-            
+            viewModel = new GroupViewModel();
 
             if (!ModelState.IsValid)
             {
@@ -73,20 +80,19 @@ namespace Leopard.Controllers
                     }
                     
                 }
-
-                viewModel.Grupos = GetGroups();
                 
-
             }
-            
-            return View("Index",viewModel);
+
+            return RedirectToAction("Index", new RouteValueDictionary(new { controller = "Home", action = "Index" }));
         }
 
 
         [ValidateAntiForgeryToken]
         public ActionResult CheckGroup(GroupViewModel groupViewModel)
         {
-            GroupViewModel viewModel = new GroupViewModel();
+
+            viewModel = new GroupViewModel();
+
             viewModel.Result = new Result();
 
             try
@@ -132,14 +138,8 @@ namespace Leopard.Controllers
                 
                 viewModel.Grupo.WhatsAppURL = groupViewModel.Grupo.WhatsAppURL;
             }
-            finally
-            {
-                viewModel.Grupos = GetGroups();
-
-            }
-
-
-            return View("Index", viewModel);
+            
+            return RedirectToAction("Index", new RouteValueDictionary(new { controller = "Home", action = "Index"}));
         }
 
         public ActionResult Help()

@@ -28,7 +28,7 @@ namespace Leopard.Models
        
         private string _whatsAppURL;
 
-        [DisplayName("WhatsApp")]
+        [DisplayName("Url del grupo")]
         [Required]
         [RegularExpression(@"^https://chat.whatsapp.com/.+", ErrorMessage = "Url no válida")]
         public string WhatsAppURL
